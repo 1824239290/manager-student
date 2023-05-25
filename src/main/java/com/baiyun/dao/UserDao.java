@@ -2,7 +2,7 @@ package com.baiyun.dao;
 
 import com.baiyun.entity.User;
 
-import java.sql.SQLException;
+import java.io.IOException;
 
 /**
  * 语法规范
@@ -14,5 +14,5 @@ public interface UserDao {
      * @param username 用户名
      * @return User
      */
-    User selectByUsername(String username) throws SQLException, ClassNotFoundException;
+    User selectByUsername(String username) throws IOException;
 }
