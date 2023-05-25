@@ -18,8 +18,8 @@
 	        border: true, 
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 
-	        method: "post",
-	        url:"GradeServlet?method=GradeList&course=course&t="+new Date().getTime(),
+	        method: "get",
+	        url:"/grade?page=1&size=10&t="+new Date().getTime(),
 	        idField:'id', 
 	        singleSelect: true,//是否单选 
 	        pagination: false,//分页控件 
@@ -29,8 +29,8 @@
 	        remoteSort: false,
 	        columns: [[  
 				{field:'chk',checkbox: true,width:50},
- 		        {field:'id',title:'ID',width:50, sortable: true},    
- 		        {field:'name',title:'年级名称',width:200},
+ 		        {field:'gid',title:'ID',width:50, sortable: true},
+ 		        {field:'gradeName',title:'年级名称',width:200},
  		        {field:'courseList',title:'年级课程',width:650, 
  		        	formatter: function(value,row,index){
  						if (row.courseList){
