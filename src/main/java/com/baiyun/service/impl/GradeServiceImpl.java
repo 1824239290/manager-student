@@ -17,6 +17,11 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
+    public List<Grade> selectAll() {
+        return gradeDao.selectAll();
+    }
+
+    @Override
     public int add(String gradeName, String course) {
         //调用数据层
         return gradeDao.insertGrade(gradeName);

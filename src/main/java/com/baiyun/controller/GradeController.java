@@ -28,6 +28,24 @@ public class GradeController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String method = req.getParameter("method");
+        if ("selectAllByPage".equals(method)){
+            selectAllByPage(req, resp);
+        }else if ("selectAll".equals(method)){
+            selectAll(req,resp);
+        }
+    }
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //获取年级的名字
+        String gradeName = req.getParameter("gradeName");
+        //获取课程名称
+        String course = req.getParameter("course");
+        int add = gradeService.add(gradeName,course);
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().println(add);
+    }
+    private void selectAllByPage(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int page = Integer.parseInt(req.getParameter("page"));
         int size = Integer.parseInt(req.getParameter("size"));
         List<Grade> list;
@@ -37,6 +55,12 @@ public class GradeController extends HttpServlet {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        String jsonString = JSONObject.toJSONString(list);
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().println(jsonString);
+    }
+    private void selectAll(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        List<Grade> list = gradeService.selectAll();
         String jsonString = JSONObject.toJSONString(list);
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().println(jsonString);

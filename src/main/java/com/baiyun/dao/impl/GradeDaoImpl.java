@@ -11,10 +11,6 @@ import java.util.List;
 
 public class GradeDaoImpl implements GradeDao {
 
-    public static final String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/manager_student";
-    public static final String JDBC_USERNAME = "root";
-    public static final String JDBC_PASSWORD ="123456";
-
     public static final GradeMapper gradeMapper;
 
     static {
@@ -29,6 +25,12 @@ public class GradeDaoImpl implements GradeDao {
     public List<Grade> selectGradeList(int limit, int size) throws SQLException {
         return gradeMapper.selectGradeList(limit,size);
     }
+
+    @Override
+    public List<Grade> selectAll() {
+        return gradeMapper.selectAll();
+    }
+
 
     @Override
     public int insertGrade(String gradeName) {

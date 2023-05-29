@@ -18,20 +18,20 @@
 	        border: true, 
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 
-	        method: "post",
-	        url:"ClazzServlet?method=ClazzDetailList&t="+new Date().getTime(),
-	        idField:'id', 
+	        method: "get",
+	        url:"/clazz",
+	        idField:'cid',
 	        singleSelect: true,//是否单选 
 	        pagination: true,//分页控件 
 	        rownumbers: true,//行号 
-	        sortName: 'id',
+	        sortName: 'cid',
 	        sortOrder: 'DESC', 
 	        remoteSort: false,
 	        columns: [[  
 				{field:'chk',checkbox: true,width:50},
- 		        {field:'id',title:'ID',width:50, sortable: true},    
- 		        {field:'name',title:'班级名称',width:200},
- 		        {field:'grade',title:'所属年级',width:100, 
+ 		        {field:'cid',title:'ID',width:50, sortable: true},
+ 		        {field:'clazzName',title:'班级名称',width:200},
+ 		        {field:'grade',title:'所属年级',width:100,
  		        	formatter: function(value,row,index){
  						if (row.grade){
  							return row.grade.name;
@@ -89,14 +89,14 @@
 	  	$("#gradeList").combobox({
 	  		width: "150",
 	  		height: "25",
-	  		valueField: "id",
-	  		textField: "name",
+	  		valueField: "gid",
+	  		textField: "gradeName",
 	  		multiple: false, //可多选
 	  		editable: false, //不可编辑
-	  		method: "post",
-	  		url: "GradeServlet?method=GradeList&t="+new Date().getTime(),
+	  		method: "get",
+	  		url: "/grade?method=selectAll&t="+new Date().getTime(),
 	  		onChange: function(newValue, oldValue){
-	  			$('#dataList').datagrid("options").queryParams = {gradeid: newValue};
+	  			$('#dataList').datagrid("options").queryParams = {gid: newValue};
 	  			$('#dataList').datagrid("reload");
 	  		}
 	  	});

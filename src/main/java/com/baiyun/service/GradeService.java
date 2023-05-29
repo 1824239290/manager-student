@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface GradeService {
     List<Grade> getList(int page,int size) throws SQLException;
+    List<Grade> selectAll();
     int add(String gradeName,String course);
 }

@@ -19,12 +19,12 @@
 	        collapsible: false,//是否可折叠的 
 	        fit: true,//自动大小 
 	        method: "get",
-	        url:"/grade?page=1&size=10&t="+new Date().getTime(),
+	        url:"/grade?method=selectAll&t="+new Date().getTime(),
 	        idField:'id', 
 	        singleSelect: true,//是否单选 
 	        pagination: false,//分页控件 
 	        rownumbers: true,//行号 
-	        sortName:'id',
+	        sortName:'gid',
 	        sortOrder:'DESC', 
 	        remoteSort: false,
 	        columns: [[  
@@ -117,7 +117,7 @@
 						} else{
 							$.ajax({
 								type: "post",
-								url: "GradeServlet?method=AddGrade",
+								url: "/grade",
 								data: $("#addForm").serialize(),
 								success: function(msg){
 									if(msg == "success"){
