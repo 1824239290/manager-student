@@ -30,4 +30,14 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> selectAlldt(String gid,String cid, int page, int rows) {
         return studentMapper.selectALLdt(gid,cid,page,rows);
     }
+
+    @Override
+    public int addStudent(Student student) {
+        return studentMapper.addStudent(student);
+    }
+
+    @Override
+    public int updateStudent(Student student) {
+        return studentMapper.updateStudent(student);
+    }
 }

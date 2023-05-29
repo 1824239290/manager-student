@@ -7,4 +7,7 @@ import java.util.List;
 public interface StudentDao {
     List<Student> selentAll();
     List<Student> selectAlldt(String gid,String cid, int page, int rows);
+    int addStudent(Student student);
+
+    int updateStudent(Student student);
 }

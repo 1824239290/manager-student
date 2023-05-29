@@ -29,7 +29,12 @@ public class StudentController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        String method = req.getParameter("method");
+        if ("addStudent".equals(method)){
+            addStudent(req,resp);
+        }else if ("updateStudent".equals(method)){
+            updateStudent(req,resp);
+        }
     }
     private void selectALL(HttpServletRequest req,HttpServletResponse resp) throws IOException {
         List<Student> list = studentService.selectAll();
@@ -53,5 +58,49 @@ public class StudentController extends HttpServlet {
         String jsonString = JSONObject.toJSONString(list);
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().println(jsonString);
+    }
+    private void addStudent(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        String number = req.getParameter("number");
+        String name = req.getParameter("name");
+        String sex = req.getParameter("sex");
+        String phone = req.getParameter("phone");
+        String qq = req.getParameter("qq");
+        String gid = req.getParameter("gradeid");
+        String cid = req.getParameter("clazzid");
+        Student student = new Student();
+        student.setNumber(number);
+        student.setName(name);
+        student.setGender(sex);
+        student.setPhone(phone);
+        student.setQq(qq);
+        student.setGid(Integer.valueOf(gid));
+        student.setCid(Integer.valueOf(cid));
+        Map<String,Object> result = studentService.addStudent(student);
+        resp.setContentType("application/json;charset=utf-8");
+        String s = JSONObject.toJSONString(result);
+        resp.getWriter().write(s);
+//        int i = studentService.addStudent(student);
+//        System.out.println(i);
+    }
+    private void updateStudent(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        String number = req.getParameter("number");
+        String name = req.getParameter("name");
+        String sex = req.getParameter("sex");
+        String phone = req.getParameter("phone");
+        String qq = req.getParameter("qq");
+        String gid = req.getParameter("gradeid");
+        String cid = req.getParameter("clazzid");
+        Student student = new Student();
+        student.setNumber(number);
+        student.setName(name);
+        student.setGender(sex);
+        student.setPhone(phone);
+        student.setQq(qq);
+        student.setGid(Integer.valueOf(gid));
+        student.setCid(Integer.valueOf(cid));
+        Map<String,Object> result = studentService.updateStudent(student);
+        resp.setContentType("application/json;charset=utf-8");
+        String s = JSONObject.toJSONString(result);
+        resp.getWriter().write(s);
     }
 }
