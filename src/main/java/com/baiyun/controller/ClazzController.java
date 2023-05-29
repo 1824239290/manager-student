@@ -18,10 +18,25 @@ public class ClazzController extends HttpServlet {
     ClazzService clazzService = new ClazzServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String method = req.getParameter("method");
+        if ("selectAllByPageAndRow".equals(method)){
+            selectAllByPageAndRow(req, resp);
+        }else if ("selectAlldt".equals(method)){
+            selectAlldt(req, resp);
+        }
+    }
+    private void selectAllByPageAndRow(HttpServletRequest req,HttpServletResponse resp) throws IOException {
         List<Clazz> list = null;
         int page = Integer.parseInt(req.getParameter("page"));
         int rows = Integer.parseInt(req.getParameter("rows"));
         list = clazzService.selectAllByPageAndRow(page,rows);
+        String jsonString = JSONObject.toJSONString(list);
+        resp.setContentType("application/json;charset=utf-8");
+        resp.getWriter().println(jsonString);
+    }
+    private void selectAlldt(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        String gid = req.getParameter("gid");
+        List<Clazz> list = clazzService.selectAlldt(gid);
         String jsonString = JSONObject.toJSONString(list);
         resp.setContentType("application/json;charset=utf-8");
         resp.getWriter().println(jsonString);

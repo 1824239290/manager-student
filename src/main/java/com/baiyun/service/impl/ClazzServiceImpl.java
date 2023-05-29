@@ -10,8 +10,8 @@ import java.util.List;
 public class ClazzServiceImpl implements ClazzService {
     private ClazzDao clazzDao = new ClazzDaoImpl();
     @Override
-    public List<Clazz> selectAll() {
-        return clazzDao.selectAll();
+    public List<Clazz> selectAlldt(String gid) {
+        return clazzDao.selectAlldt(gid);
     }
 
     @Override

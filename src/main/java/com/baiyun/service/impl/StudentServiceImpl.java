@@ -13,4 +13,10 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> selectAll() {
         return studentDao.selentAll();
     }
+
+    @Override
+    public List<Student> selectAlldt(String gid,String cid,int page,int rows) {
+        page = page-1;
+        return studentDao.selectAlldt(gid,cid,page,rows);
+    }
 }

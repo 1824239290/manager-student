@@ -20,8 +20,8 @@ public class ClazzDaoImpl implements ClazzDao {
     }
 
     @Override
-    public List<Clazz> selectAll() {
-        return clazzMapper.selectAll();
+    public List<Clazz> selectAlldt(String gid) {
+        return clazzMapper.selectAlldt(gid);
     }
 
     @Override

@@ -19,7 +19,7 @@
 	        collapsible:false,//是否可折叠的 
 	        fit: true,//自动大小 
 	        method: "get",
-	        url:"/student?t="+new Date().getTime(),
+	        url:"/student?method=selectAlldt&t="+new Date().getTime(),
 	        idField:'id', 
 	        singleSelect:false,//是否单选 
 	        pagination:true,//分页控件 
@@ -141,15 +141,15 @@
 	  	$("#clazzList").combobox({
 	  		width: "150",
 	  		height: "25",
-	  		valueField: "id",
-	  		textField: "name",
+	  		valueField: "cid",
+	  		textField: "clazzName",
 	  		multiple: false, //可多选
 	  		editable: false, //不可编辑
-	  		method: "post",
-	  		url: "ClazzServlet?method=ClazzList&t="+new Date().getTime(),
+	  		method: "get",
+	  		url: "/clazz?method=selectAlldt&t="+new Date().getTime(),
 	  		onChange: function(newValue, oldValue){
 	  			//加载班级下的学生
-	  			$('#dataList').datagrid("options").queryParams = {clazzid: newValue};
+	  			$('#dataList').datagrid("options").queryParams = {cid: newValue};
 	  			$('#dataList').datagrid("reload");
 	  		}
 	  	});

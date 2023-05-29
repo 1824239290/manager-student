@@ -25,4 +25,9 @@ public class StudentDaoImpl implements StudentDao {
     public List<Student> selentAll() {
         return studentMapper.selectAll();
     }
+
+    @Override
+    public List<Student> selectAlldt(String gid,String cid, int page, int rows) {
+        return studentMapper.selectALLdt(gid,cid,page,rows);
+    }
 }
