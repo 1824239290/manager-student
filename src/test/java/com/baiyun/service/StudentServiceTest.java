@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class StudentServiceTest{
+public class StudentServiceTest {
     private StudentService studentService = new StudentServiceImpl();
     @Test
     public void selectAlldtTest() {
@@ -29,5 +29,11 @@ public class StudentServiceTest{
         student.setCid(Integer.valueOf("3"));
 //        int a = studentService.addStudent(student);
 //        System.out.println(a);
+    }
+
+    @Test
+    public void deleteStudent() {
+        String ids[] = {"18"};
+        studentService.deleteStudent(ids);
     }
 }

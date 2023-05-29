@@ -10,4 +10,5 @@ public interface StudentDao {
     int addStudent(Student student);
 
     int updateStudent(Student student);
+    int deleteStudent(String ids[]);
 }

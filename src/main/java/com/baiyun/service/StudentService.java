@@ -13,4 +13,6 @@ public interface StudentService {
 
     Map<String,Object> updateStudent(Student student);
 
+    Map<String,Object> deleteStudent(String ids[]);
+
 }

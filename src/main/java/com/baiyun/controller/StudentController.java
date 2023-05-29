@@ -34,6 +34,8 @@ public class StudentController extends HttpServlet {
             addStudent(req,resp);
         }else if ("updateStudent".equals(method)){
             updateStudent(req,resp);
+        }else if ("deleteStudent".equals(method)){
+            deleteStudent(req,resp);
         }
     }
     private void selectALL(HttpServletRequest req,HttpServletResponse resp) throws IOException {
@@ -99,6 +101,16 @@ public class StudentController extends HttpServlet {
         student.setGid(Integer.valueOf(gid));
         student.setCid(Integer.valueOf(cid));
         Map<String,Object> result = studentService.updateStudent(student);
+        resp.setContentType("application/json;charset=utf-8");
+        String s = JSONObject.toJSONString(result);
+        resp.getWriter().write(s);
+    }
+    private void deleteStudent(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        String[] ids = req.getParameterValues("ids[]");
+        for (int i = 0; i < ids.length; i++) {
+            System.out.println(ids[i]);
+        }
+        Map<String,Object> result = studentService.deleteStudent(ids);
         resp.setContentType("application/json;charset=utf-8");
         String s = JSONObject.toJSONString(result);
         resp.getWriter().write(s);

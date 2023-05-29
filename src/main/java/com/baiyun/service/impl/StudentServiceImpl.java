@@ -53,4 +53,20 @@ public class StudentServiceImpl implements StudentService {
         result.put("message","添加失败");
         return result;
     }
+
+    @Override
+    public Map<String, Object> deleteStudent(String ids[]) {
+        Map<String,Object> result = new HashMap<>();
+        try{
+            studentDao.deleteStudent(ids);
+            result.put("status",200);
+            result.put("message","删除成功");
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        result.put("status",500);
+        result.put("message","删除失败");
+        return result;
+    }
 }

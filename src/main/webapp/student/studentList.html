@@ -91,22 +91,23 @@
             	});
             	var ids = [];
             	$(selectRows).each(function(i, row){
-            		ids[i] = row.id;
+            		ids[i] = row.sid;
+					console.log(ids[i])
             	});
             	$.messager.confirm("消息提醒", "将删除与学生相关的所有数据(包括成绩)，确认继续？", function(r){
             		if(r){
             			$.ajax({
 							type: "post",
-							url: "StudentServlet?method=DeleteStudent",
+							url: "/student?method=deleteStudent",
 							data: {numbers: numbers, ids: ids},
 							success: function(msg){
-								if(msg == "success"){
+								if(msg.status == 200){
 									$.messager.alert("消息提醒","删除成功!","info");
 									//刷新表格
 									$("#dataList").datagrid("reload");
 									$("#dataList").datagrid("uncheckAll");
 								} else{
-									$.messager.alert("消息提醒","删除失败!","warning");
+									$.messager.alert("消息提醒",msg.message,"warning");
 									return;
 								}
 							}

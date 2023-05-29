@@ -40,4 +40,9 @@ public class StudentDaoImpl implements StudentDao {
     public int updateStudent(Student student) {
         return studentMapper.updateStudent(student);
     }
+
+    @Override
+    public int deleteStudent(String ids[]) {
+        return studentMapper.deleteStudent(ids);
+    }
 }
