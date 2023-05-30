@@ -12,15 +12,17 @@
     </delete>
 
     <select id="selectALLdt" resultType="com.baiyun.entity.Student">
-        select * from student
+        select sid,number,name,gender,phone,qq,clazzName,gradeName
+        from student a LEFT JOIN clazz b on a.cid=b.cid LEFT JOIN grade c on a.gid=c.gid
         <where>
             <if test="gid != null">
-                gid = #{gid}
+                a.gid = #{gid}
             </if>
             <if test="cid != null">
-                cid = #{cid}
+                a.cid = #{cid}
             </if>
         </where>
+        GROUP BY sid
         limit #{page},#{rows}
     </select>
 </mapper>

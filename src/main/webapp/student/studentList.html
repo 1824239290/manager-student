@@ -35,7 +35,7 @@
  		        {field:'gender',title:'性别',width:100},
  		        {field:'phone',title:'电话',width:150},
  		        {field:'qq',title:'QQ',width:150},
- 		        {field:'cid',title:'班级',width:150,
+ 		        {field:'clazzName',title:'班级',width:150,
  		        	formatter: function(value,row,index){
  						if (row.clazz){
  							return row.clazz.name;
@@ -44,7 +44,7 @@
  						}
  					}
 				},
- 		        {field:'sid',title:'年级',width:150,
+ 		        {field:'gradeName',title:'年级',width:150,
 					formatter: function(value,row,index){
  						if (row.grade){
  							return row.grade.name;

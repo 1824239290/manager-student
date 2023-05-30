@@ -10,6 +10,9 @@ public class Student {
     Integer cid;
     Integer gid;
 
+    String gradeName;
+    String clazzName;
+
     public Integer getSid() {
         return sid;
     }
@@ -74,6 +77,22 @@ public class Student {
         this.gid = gid;
     }
 
+    public String getGradeName() {
+        return gradeName;
+    }
+
+    public void setGradeName(String gradeName) {
+        this.gradeName = gradeName;
+    }
+
+    public String getClazzName() {
+        return clazzName;
+    }
+
+    public void setClazzName(String clazzName) {
+        this.clazzName = clazzName;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -85,6 +104,8 @@ public class Student {
                 ", qq='" + qq + '\'' +
                 ", cid=" + cid +
                 ", gid=" + gid +
+                ", gradeName='" + gradeName + '\'' +
+                ", clazzName='" + clazzName + '\'' +
                 '}';
     }
 }
