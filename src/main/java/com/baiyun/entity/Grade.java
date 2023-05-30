@@ -1,17 +1,17 @@
 package com.baiyun.entity;
 
 public class Grade {
-    private int gid;
+    private Integer gid;
     private String gradeName;
 
     public Grade() {
     }
 
-    public int getGid() {
+    public Integer getGid() {
         return gid;
     }
 
-    public void setGid(int gid) {
+    public void setGid(Integer gid) {
         this.gid = gid;
     }
 
@@ -21,13 +21,5 @@ public class Grade {
 
     public void setGradeName(String gradeName) {
         this.gradeName = gradeName;
-    }
-
-    @Override
-    public String toString() {
-        return "Grade{" +
-                "gid=" + gid +
-                ", gradeName='" + gradeName + '\'' +
-                '}';
     }
 }
