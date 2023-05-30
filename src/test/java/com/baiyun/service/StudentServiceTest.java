@@ -6,6 +6,7 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -18,22 +19,44 @@ public class StudentServiceTest {
     }
 
     @Test
-    public void addStudent() {
+    public void testAddStudent() {
         Student student = new Student();
-        student.setNumber("001");
+        student.setNumber("008");
         student.setName("lisi");
         student.setGender("男");
         student.setPhone("12345678901");
         student.setQq("1924239290");
         student.setGid(Integer.valueOf("2"));
         student.setCid(Integer.valueOf("3"));
-//        int a = studentService.addStudent(student);
-//        System.out.println(a);
+        Map<String, Object> a = studentService.addStudent(student);
+        System.out.println(a);
     }
 
     @Test
     public void deleteStudent() {
-        String ids[] = {"18"};
-        studentService.deleteStudent(ids);
+        String ids[] = {"21"};
+        Map<String, Object> i =  studentService.deleteStudent(ids);
+        System.out.println(i);
     }
+
+    @Test
+    public void selectAll() {
+        System.out.println(studentService.selectAll());
+    }
+
+
+    @Test
+    public void updateStudent() {
+        Student student = new Student();
+        student.setNumber("0080");
+        student.setName("lisi");
+        student.setGender("男");
+        student.setPhone("12345678901");
+        student.setQq("1924239290");
+        student.setGid(Integer.valueOf("2"));
+        student.setCid(Integer.valueOf("3"));
+        Map<String, Object> a = studentService.updateStudent(student);
+        System.out.println(a);
+    }
+
 }
