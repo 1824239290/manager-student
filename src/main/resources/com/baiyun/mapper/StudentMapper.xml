@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baiyun.mapper.StudentMapper">
+
+    <delete id="deleteStudent">
+        delete from student where sid in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectALLdt" resultType="com.baiyun.entity.Student">
+        select sid,number,name,gender,phone,qq,clazzName,gradeName
+        from student a LEFT JOIN clazz b on a.cid=b.cid LEFT JOIN grade c on a.gid=c.gid
+        <where>
+            <if test="gid != null">
+                a.gid = #{gid}
+            </if>
+            <if test="cid != null">
+                a.cid = #{cid}
+            </if>
+        </where>
+        GROUP BY sid
+        limit #{page},#{rows}
+    </select>
+</mapper>
