@@ -4,6 +4,7 @@ public class Clazz {
     Integer cid;
     String clazzName;
     Integer gid;
+    String gradeName;
 
     public Integer getCid() {
         return cid;
@@ -29,12 +30,21 @@ public class Clazz {
         this.gid = gid;
     }
 
+    public String getGradeName() {
+        return gradeName;
+    }
+
+    public void setGradeName(String gradeName) {
+        this.gradeName = gradeName;
+    }
+
     @Override
     public String toString() {
         return "Clazz{" +
                 "cid=" + cid +
                 ", clazzName='" + clazzName + '\'' +
                 ", gid=" + gid +
+                ", gradeName='" + gradeName + '\'' +
                 '}';
     }
 }
